@@ -23,3 +23,8 @@ How to use
 
     pyghlight sample.py
 
+## Links
+
+* [pygments](https://pygments.org)
+* [CTAN](https://www.ctan.org/)
+* [argparse](https://docs.python.org/3/library/argparse.html)

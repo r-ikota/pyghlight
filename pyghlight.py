@@ -22,7 +22,7 @@ preamble = r"""
 #%%
 
 #%%
-def build(input_file, output_file=None):
+def build(input_file, output_file=None, include_title=False):
 
     cwd = os.getcwd()
 
@@ -36,10 +36,12 @@ def build(input_file, output_file=None):
 
     lexer = get_lexer_for_filename(input_file_basename)
 
+    title =  input_file_basename.replace("_", "\_") if include_title else ""
+
     with open(input_file, "r") as f:
         code = f.read()
 
-    latex = highlight(code, lexer, LatexFormatter(preamble=preamble, full=True))
+    latex = highlight(code, lexer, LatexFormatter(preamble=preamble, full=True, title=title))
 
     with TemporaryDirectory() as tmpdir:
         latex_fpath = os.path.join(tmpdir, latex_file_basename)
@@ -66,10 +68,12 @@ def main():
     )
     parser.add_argument("input_file", help="a file containing code")
     parser.add_argument("-o", "--out", help="an output file name, optional")
+    parser.add_argument("-t", "--title", action="store_true", default=False, help="to include the file name as the title; the default is False")
     args = parser.parse_args()
     input_file = args.input_file
     output_file = args.out
-    build(input_file, output_file)
+    include_title = args.title
+    build(input_file, output_file, include_title)
 
 if __name__ == "__main__":
     main()
