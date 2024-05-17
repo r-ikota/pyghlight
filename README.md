@@ -6,20 +6,18 @@ lualatex needs to be installed and placed in your command path.
 
 ## Install
 
-    python setup.py install
+```
+pip install .
+```
 
-## Install & Uninstall
-For unix
+or 
 
-    python setup.py install --record files.txt
-    cat files.txt | xargs rm -rf
+```
+pip install -e . # editablel mode
+```
 
-For Windows
 
-    python setup.py install --record files.txt
-    Get-Content files.txt | ForEach-Object {Remove-Item $_ -Recurse -Force}
-
-How to use
+## How to use
 
     pyghlight sample.py
 
