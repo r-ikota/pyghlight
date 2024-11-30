@@ -16,6 +16,12 @@ or
 pip install -e . # editablel mode
 ```
 
+or
+
+```
+uv tool install .
+```
+
 
 ## How to use
 
